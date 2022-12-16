@@ -1,0 +1,12 @@
+.app {
+  position: relative;
+  min-height: 100%;
+  background-color: #242526;
+
+  .content {
+    position: absolute;
+    top: 60px;
+    width: 100%;
+    min-height: calc(100% - 60px);
+  }
+}
