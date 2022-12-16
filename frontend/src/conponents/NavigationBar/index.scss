@@ -1,0 +1,37 @@
+.navigate-bar {
+    position: fixed;
+    top: 0;
+    height: 60px;
+    width: 100%;
+    box-shadow: 0 1px 2px 0 #0000001a;
+    background-color: #242526;
+    z-index: 1;
+
+    .nav-link {
+        float: left;
+        color: #e3e3e3;
+        height: 100%;
+        line-height: 60px;
+        padding: 0 20px;
+        font-size: 16px;
+        font-weight: bold;
+
+        &:hover {
+            color: #ffe895;
+        }
+
+        &.active {
+            color: #ffe895;
+            border-bottom: 2px solid #ffe895;
+        }
+
+        .logo {
+            display: block;
+            margin: 14px 0px;
+            height: 30px;
+            width: 100px;
+            background: url('../SearchBar/logo.png') no-repeat center top;
+            background-size: cover;
+        }
+    }
+}
