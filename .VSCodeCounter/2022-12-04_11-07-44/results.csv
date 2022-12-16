@@ -1,0 +1,43 @@
+"filename", "language", "JavaScript React", "JavaScript", "SCSS", "comment", "blank", "total"
+"/home/wyl/Desktop/github_visualize/src/App.jsx", "JavaScript React", 17, 0, 0, 0, 3, 20
+"/home/wyl/Desktop/github_visualize/src/App.scss", "SCSS", 0, 0, 11, 0, 1, 12
+"/home/wyl/Desktop/github_visualize/src/conponents/CompareSearch/index.jsx", "JavaScript React", 123, 0, 0, 0, 10, 133
+"/home/wyl/Desktop/github_visualize/src/conponents/CompareSearch/index.scss", "SCSS", 0, 0, 124, 0, 20, 144
+"/home/wyl/Desktop/github_visualize/src/conponents/DataTable/UserBinder/index.jsx", "JavaScript React", 62, 0, 0, 0, 5, 67
+"/home/wyl/Desktop/github_visualize/src/conponents/DataTable/UserBinder/index.scss", "SCSS", 0, 0, 24, 0, 4, 28
+"/home/wyl/Desktop/github_visualize/src/conponents/DataTable/index.jsx", "JavaScript React", 123, 0, 0, 0, 14, 137
+"/home/wyl/Desktop/github_visualize/src/conponents/DataTable/index.scss", "SCSS", 0, 0, 89, 0, 21, 110
+"/home/wyl/Desktop/github_visualize/src/conponents/NavigationBar/index.jsx", "JavaScript React", 23, 0, 0, 0, 3, 26
+"/home/wyl/Desktop/github_visualize/src/conponents/NavigationBar/index.scss", "SCSS", 0, 0, 33, 0, 4, 37
+"/home/wyl/Desktop/github_visualize/src/conponents/SearchBar/AutoComplete/index.jsx", "JavaScript React", 45, 0, 0, 0, 2, 47
+"/home/wyl/Desktop/github_visualize/src/conponents/SearchBar/AutoComplete/index.scss", "SCSS", 0, 0, 75, 0, 14, 89
+"/home/wyl/Desktop/github_visualize/src/conponents/SearchBar/Loading/index.jsx", "JavaScript React", 10, 0, 0, 0, 3, 13
+"/home/wyl/Desktop/github_visualize/src/conponents/SearchBar/Loading/index.scss", "SCSS", 0, 0, 10, 0, 0, 10
+"/home/wyl/Desktop/github_visualize/src/conponents/SearchBar/index.jsx", "JavaScript React", 99, 0, 0, 0, 8, 107
+"/home/wyl/Desktop/github_visualize/src/conponents/SearchBar/index.scss", "SCSS", 0, 0, 56, 0, 9, 65
+"/home/wyl/Desktop/github_visualize/src/conponents/TrendingRepos/LangSelector/index.jsx", "JavaScript React", 81, 0, 0, 0, 9, 90
+"/home/wyl/Desktop/github_visualize/src/conponents/TrendingRepos/LangSelector/index.scss", "SCSS", 0, 0, 88, 0, 20, 108
+"/home/wyl/Desktop/github_visualize/src/conponents/TrendingRepos/Loading/index.jsx", "JavaScript React", 10, 0, 0, 0, 3, 13
+"/home/wyl/Desktop/github_visualize/src/conponents/TrendingRepos/Loading/index.scss", "SCSS", 0, 0, 6, 0, 0, 6
+"/home/wyl/Desktop/github_visualize/src/conponents/TrendingRepos/ReposTable/index.jsx", "JavaScript React", 127, 0, 0, 0, 13, 140
+"/home/wyl/Desktop/github_visualize/src/conponents/TrendingRepos/ReposTable/index.scss", "SCSS", 0, 0, 119, 0, 25, 144
+"/home/wyl/Desktop/github_visualize/src/conponents/TrendingRepos/index.jsx", "JavaScript React", 37, 0, 0, 0, 7, 44
+"/home/wyl/Desktop/github_visualize/src/conponents/TrendingRepos/index.scss", "SCSS", 0, 0, 17, 0, 3, 20
+"/home/wyl/Desktop/github_visualize/src/index.js", "JavaScript", 0, 19, 0, 0, 3, 22
+"/home/wyl/Desktop/github_visualize/src/index.scss", "SCSS", 0, 0, 39, 1, 10, 50
+"/home/wyl/Desktop/github_visualize/src/pages/AnalyzePage/index.jsx", "JavaScript React", 93, 0, 0, 0, 7, 100
+"/home/wyl/Desktop/github_visualize/src/pages/AnalyzePage/index.scss", "SCSS", 0, 0, 169, 0, 32, 201
+"/home/wyl/Desktop/github_visualize/src/pages/ExplorePage/index.jsx", "JavaScript React", 10, 0, 0, 0, 2, 12
+"/home/wyl/Desktop/github_visualize/src/pages/ExplorePage/index.scss", "SCSS", 0, 0, 4, 0, 0, 4
+"/home/wyl/Desktop/github_visualize/src/pages/HomePage/index.jsx", "JavaScript React", 12, 0, 0, 0, 2, 14
+"/home/wyl/Desktop/github_visualize/src/pages/HomePage/index.scss", "SCSS", 0, 0, 3, 0, 0, 3
+"/home/wyl/Desktop/github_visualize/src/pages/UserCenterPage/BookmarksPage/index.jsx", "JavaScript React", 13, 0, 0, 0, 3, 16
+"/home/wyl/Desktop/github_visualize/src/pages/UserCenterPage/HistoryPage/index.jsx", "JavaScript React", 11, 0, 0, 0, 2, 13
+"/home/wyl/Desktop/github_visualize/src/pages/UserCenterPage/HistoryPage/index.scss", "SCSS", 0, 0, 8, 0, 1, 9
+"/home/wyl/Desktop/github_visualize/src/pages/UserCenterPage/MyReposPage/index.jsx", "JavaScript React", 13, 0, 0, 0, 2, 15
+"/home/wyl/Desktop/github_visualize/src/pages/UserCenterPage/MyStarredPage/index.jsx", "JavaScript React", 13, 0, 0, 0, 2, 15
+"/home/wyl/Desktop/github_visualize/src/pages/UserCenterPage/index.jsx", "JavaScript React", 18, 0, 0, 0, 2, 20
+"/home/wyl/Desktop/github_visualize/src/pages/UserCenterPage/index.scss", "SCSS", 0, 0, 33, 0, 4, 37
+"/home/wyl/Desktop/github_visualize/src/routes/routes.js", "JavaScript", 0, 54, 0, 0, 2, 56
+"/home/wyl/Desktop/github_visualize/src/setupProxy.js", "JavaScript", 0, 11, 0, 0, 1, 12
+"Total", "-", 940, 84, 908, 1, 276, 2209
