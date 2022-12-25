@@ -100,7 +100,6 @@ export default function CompaniesInfo(props) {
                                     return (
                                         <div key={idx} className="list-item">
                                             <span className='fl'><LoadingOutlined className='yellow' /></span>
-                                            <span className='fr'><LoadingOutlined className='yellow' /></span>
                                         </div>
                                     )
                                 })
@@ -126,7 +125,6 @@ export default function CompaniesInfo(props) {
                                             return (
                                                 <div key={idx} className="list-item">
                                                     <span className='fl'><LoadingOutlined className='yellow' /></span>
-                                                    <span className='fr'><LoadingOutlined className='yellow' /></span>
                                                 </div>
                                             )
                                         })}

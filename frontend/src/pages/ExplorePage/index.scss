@@ -1,4 +1,141 @@
-.home-page {
-    height: 100%;
-    background-color: #242526;
+.explore-page {
+    background-color: #1b1b1d;
+    min-height: 100%;
+    width: 100%;
+
+    .w {
+        margin: 0 auto;
+        width: 1152px;
+    }
+
+    h1 {
+        text-align: center;
+        font-size: 28px;
+        font-weight: bold;
+        font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+        color: #fff;
+        margin-bottom: 16px;
+        padding-top: 24px;
+    }
+
+    p {
+        text-align: center;
+        font-size: 16px;
+        margin-bottom: 16px;
+        color: #fff;
+    }
+
+    .search-container {
+        height: 40px;
+        margin: 16px 0;
+
+        .search {
+            float: right;
+            height: 40px;
+            width: 254px;
+            border: 1px solid #3c3c3c;
+            border-radius: 4px;
+            padding-left: 14px;
+            line-height: 40px;
+            font-size: 16px;
+            color: #fff;
+
+            &.highlight-border {
+                border: 1px solid #ffe895 !important;
+                outline: 1px solid #ffe895;
+            }
+
+            &:hover {
+                border: 1px solid #fff;
+            }
+
+            input {
+                float: right;
+                height: 38px;
+                width: 216px;
+                border: 0;
+                background-color: #1b1b1d;
+                outline: none;
+            }
+        }
+
+    }
+
+    .display-board {
+        width: 1168px;
+
+        .card {
+            float: left;
+            height: 212px;
+            width: 276px;
+            border: 2px dashed #3c3c3c;
+            border-radius: 8px;
+            margin-right: 16px;
+            margin-bottom: 16px;
+            padding: 16px;
+            font-size: 16px;
+            color: #e3e3e3;
+
+            .title {
+                margin-bottom: 16px;
+            }
+
+            .repo {
+                margin-top: 8px;
+                height: 40px;
+                line-height: 40px;
+
+                .rank {
+                    float: left;
+                    height: 40px;
+                    line-height: 40px;
+                    width: 48px;
+
+                    .red {
+                        font-size: 14px;
+                        padding-left: 4px;
+                        color: #e30c34;
+                    }
+
+                    .green {
+                        font-size: 14px;
+                        padding-left: 2px;
+                        color: #52ff52;
+                    }
+                }
+
+                .avatar {
+                    float: left;
+                    width: 40px;
+                    height: 40px;
+                    overflow: hidden;
+                    border-radius: 50%;
+                    margin-right: 16px;
+                    background-color: #3c3c3c;
+
+                    img {
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+
+                .link {
+                    float: left;
+                    color: #ffe895;
+                    height: 40px;
+                    line-height: 40px;
+                    width: 136px;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+
+                    &:hover {
+                        text-decoration: underline;
+
+                    }
+                }
+            }
+        }
+    }
 }

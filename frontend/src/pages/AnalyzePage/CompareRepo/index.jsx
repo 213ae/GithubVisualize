@@ -53,12 +53,12 @@ export default function CompareRepo(repos) {
                     <section id="Pull Requests">
                         <h2 className="sec-title">Pull Requests</h2>
                         <PROverview {...repos} />
-                        <PRHistory {...repoObj} />
+                        <PRHistory {...repos} />
                     </section>
                     <section id="Issues">
                         <h2 className="sec-title">Issues</h2>
                         <IssuesOverview {...repos} />
-                        <IssuesHistory {...repoObj} />
+                        <IssuesHistory {...repos} />
                     </section>
                 </div>
             </div>

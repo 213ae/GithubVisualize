@@ -1,8 +1,18 @@
 .issues-history {
-    .graph {
-        height: 550px;
-        width: 100%;
-        overflow: auto;
+    &.compare-mode {
+        .container {
+            .graph {
+                height: 400px;
+            }
+        }
+    }
+
+    .container {
         margin-top: 26px;
+
+        .graph {
+            height: 550px;
+            margin-top: 26px;
+        }
     }
 }

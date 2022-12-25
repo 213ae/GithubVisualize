@@ -1,6 +1,16 @@
 .pr-history {
-    .graph {
-        height: 550px;
+    &.compare-mode {
+        .container {
+            .graph {
+                height: 400px;
+            }
+        }
+    }
+
+    .container {
         margin-top: 26px;
+        .graph {
+            height: 550px;
+        }
     }
 }

@@ -1,34 +1,84 @@
 import React, { useState, useEffect } from 'react'
 import { DualAxes } from '@ant-design/plots';
+import { orderBy, max } from 'lodash'
 import axios from 'axios';
 import './index.scss'
 
-export default function PRHistory({ id }) {
-    const [data, setData] = useState([[], []]);
+const yMaxList = [5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 60, 70, 80, 90, 100,
+    120, 150, 200, 250, 300, 350, 400, 450, 500, 600, 700, 800, 900, 1000,
+    1200, 1500, 2000, 2500, 3000, 3500, 4000, 4500, 5000, 6000, 7000, 8000, 9000, 10000];
+
+export default function PRHistory(props) {
+    const isCompareMode = props[0] !== undefined && props[1] !== undefined;
+    const repos = isCompareMode ? props : [props, {}];
+
+    const [datas, setDatas] = useState([[[], []], [[], []]])
+    const [yMax, setYMax] = useState([5, 5])
+
     useEffect(() => {
-        if (id) {
-            axios.get(`/api/q/analyze-pull-requests-size-per-month?repoId=${id}`)
-                .then(res => handleData(res.data.data))
-                .then(data => setData(data))
+        Promise.all([fetchData(0), fetchData(1)])
+            .then(datas => handleData(datas))
+            .then(datas => setDatas(datas))
+            .catch(err => console.log(err))
+    }, [props])
+
+    const fetchData = idx => {
+        if (repos[idx].id) {
+            return axios.get(`/api/q/analyze-pull-requests-size-per-month?repoId=${repos[idx].id}`)
+                .then(res => res.data.data);
+        } else {
+            return [];
         }
-    }, [id])
-    const handleData = raw => {
-        const stack = [];
-        const line = [];
-        let total = 0;
-        for (let item of raw) {
-            total += item.all_size;
-            stack.push({ type: 'xl', value: item.xl, event_month: item.event_month.replace('-01', '') })
-            stack.push({ type: 'l', value: item.l, event_month: item.event_month.replace('-01', '') })
-            stack.push({ type: 'm', value: item.m, event_month: item.event_month.replace('-01', '') })
-            stack.push({ type: 's', value: item.s, event_month: item.event_month.replace('-01', '') })
-            stack.push({ type: 'xs', value: item.xs, event_month: item.event_month.replace('-01', '') })
-            line.push({ total, event_month: item.event_month.replace('-01', '') })
-        }
-        return [stack, line];
     }
+
+    const handleData = datas => {
+        const stacks = [[], []];
+        const lines = [[], []];
+        const monthSet = [[], []];
+        const diff = [[], []];
+        let yMaxIdx = [0, 0];
+        let maxVal = [0, 0];
+
+        for (let i = 0; i < 2; i++) {
+            for (let item of datas[i]) {
+                monthSet[i].push(item.event_month)
+            }
+        }
+        diff[0] = monthSet[1].filter(item => !monthSet[0].includes(item));
+        diff[1] = monthSet[0].filter(item => !monthSet[1].includes(item));
+
+        for (let i = 0; i < 2; i++) {
+            let total = 0;
+            for (let item of datas[i]) {
+                maxVal[0] = max([maxVal[0], item.all_size]);
+                total += item.all_size;
+                stacks[i].push({ type: 'xl', value: item.xl, event_month: item.event_month.replace('-01', '') })
+                stacks[i].push({ type: 'l', value: item.l, event_month: item.event_month.replace('-01', '') })
+                stacks[i].push({ type: 'm', value: item.m, event_month: item.event_month.replace('-01', '') })
+                stacks[i].push({ type: 's', value: item.s, event_month: item.event_month.replace('-01', '') })
+                stacks[i].push({ type: 'xs', value: item.xs, event_month: item.event_month.replace('-01', '') })
+                lines[i].push({ total, event_month: item.event_month.replace('-01', '') })
+            }
+            maxVal[1] = max([maxVal[1], total])
+        }
+
+        while (maxVal[0] > yMaxList[yMaxIdx[0]]) yMaxIdx[0]++;
+        while (maxVal[1] > 10 * yMaxList[yMaxIdx[1]]) yMaxIdx[1]++;
+        setYMax(yMaxList[yMaxIdx[0]], 10 * yMaxList[yMaxIdx[1]])
+
+        for (let i = 0; i < 2; i++) {
+            for (let item of diff[i]) {
+                stacks[i].push({ event_month: item });
+                lines[i].push({ event_month: item });
+            }
+            stacks[i] = orderBy(stacks[i], ['event_month'])
+            lines[i] = orderBy(lines[i], ['event_month'])
+        }
+
+        return [[stacks[0], lines[0]], [stacks[1], lines[1]]];
+    }
+
     const config = {
-        data,
         xField: 'event_month',
         yField: ['value', 'total'],
         geometryOptions: [
@@ -43,18 +93,26 @@ export default function PRHistory({ id }) {
                 color: '#ffe895',
             },
         ],
-        theme: 'dark',
         xAxis: {
             tickCount: 7,
         },
-
+        yAxis: {
+            value: {
+                max: yMax[0]
+            },
+            total: {
+                max: yMax[1]
+            }
+        },
+        theme: 'dark',
     };
     return (
-        <div className='pr-history'>
+        <div className={'pr-history ' + (isCompareMode ? 'compare-mode' : '')}>
             <h3>Pull Request History</h3>
             <p>We divide the size of Pull Request into six intervals, from xs to xxl (based on the changes of code lines). </p>
-            <div className='graph'>
-                <DualAxes {...config} />
+            <div className='container'>
+                <div className='graph'><DualAxes {...{ data: datas[0], ...config }} /></div>
+                {isCompareMode ? <div className='graph'><DualAxes {...{ data: datas[1], ...config }} /></div> : ''}
             </div>
         </div>
     )
