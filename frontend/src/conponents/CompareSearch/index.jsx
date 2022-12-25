@@ -34,7 +34,7 @@ export default function CompareSearch() {
                     .then(res => {
                         const opts = [];
                         res.data.data.forEach(val => {
-                            if (val.fullName && val.fullName.indexOf(data) !== -1)
+                            if (val.fullName && val.fullName.indexOf(data) !== -1 && val.fullName !== curRepo1)
                                 opts.push({ value: val.fullName })
                         });
                         setOptions(opts);
@@ -119,7 +119,7 @@ export default function CompareSearch() {
                     options={options}
                     onClick={() => autoSelectAll('auto-complete1')}
                     onChange={handleChange(setValue1)}
-                    onSelect={data => navigate('/analyze/' + data)}
+                    onSelect={data => navigate('/analyze/' + data + (curRepo2 ? ('?vs=' + curRepo2) : ''))}
                     onFocus={handleFocus(1)}
                     onBlur={() => setValue1(curRepo1)}
                     getPopupContainer={triggerNode => triggerNode.parentNode}

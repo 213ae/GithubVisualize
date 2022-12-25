@@ -10,17 +10,19 @@ import './index.scss'
 const { Column } = Table;
 const gitToken = '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'
 
-let bookmarkObjs = JSON.parse(localStorage.getItem('bookmarkRepos')) || {};
 
+let bookmarkObjs = JSON.parse(localStorage.getItem('bookmarkRepos')) || {};
 export default function DataTable({ label, field }) {
     const needUserInfo = field === 'starred' || field === 'repos';
     const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')) || '');
     const needBindUser = needUserInfo;
-
-    const [bookmarkRepos, setBookmarkRepos] = useState(Object.keys(bookmarkObjs));
+    
+    const [bookmarkRepos, setBookmarkRepos] = useState([]);
+    useEffect(() => {
+        bookmarkObjs = JSON.parse(localStorage.getItem('bookmarkRepos')) || {};
+        setBookmarkRepos(Object.keys(bookmarkObjs));
+    }, [])
     const [isLoading, setLoading] = useState(needUserInfo);
-    console.log(bookmarkObjs);
-
     const [repos, setRepos] = useState([]);
 
     useEffect(() => {
@@ -113,7 +115,6 @@ export default function DataTable({ label, field }) {
     }
 
     const dataSource = () => field === 'bookmarkRepos' ? Object.values(bookmarkObjs) : repos;
-
     return (
         <div className="data-table">
             <div className='title'>

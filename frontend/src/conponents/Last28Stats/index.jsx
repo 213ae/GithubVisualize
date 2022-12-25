@@ -47,11 +47,8 @@ const lineConf = {
     },
     theme: 'dark',
     color: ['#63c16d', '#904dc9'],
-    backgroundColor: '#18191a',
     smooth: true
 };
-
-let prevId = undefined;
 
 export default function Last28Stats({ id }) {
     const [days28stars, set28stars] = useState(undefined);
@@ -113,8 +110,7 @@ export default function Last28Stats({ id }) {
         setIssueConfig({ data: [] });
         set28commits(undefined);
         setCommitConfig({ data: [] });
-        if (id && prevId !== id) {
-            prevId = id;
+        if (id) {
             axios.get(`/api/q/analyze-recent-stars?repoId=${id}`)
                 .then(res => {
                     const data = res.data.data.reverse();
@@ -149,7 +145,7 @@ export default function Last28Stats({ id }) {
     }, [id])
     return (
         <>
-            <h3 className="fr-title">Last 28 days Stats</h3>
+            <h3 className="fr-title top">Last 28 days Stats</h3>
             <div className="fr-onethree">
                 <div className="fr13-left">
                     <h5><i className='iconfont icon-star'></i>Stars</h5>

@@ -1,0 +1,127 @@
+.country-info {
+    height: 697px;
+
+    .dashboard-nav {
+        height: 50px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+
+        .button {
+            float: left;
+            height: 49px;
+            padding: 0 20px;
+            font-weight: bold;
+            font-size: 16px;
+            color: #ffffffb3;
+            line-height: 50px;
+            cursor: pointer;
+
+            &.active {
+                border-bottom: 2px solid #ffe895;
+            }
+        }
+    }
+
+    .dashboard {
+        &.compare-mode {
+            .left-gragh {
+                width: calc(100% - 496px);
+            }
+
+            .right-list {
+                width: 496px;
+
+                .list {
+                    width: 50%;
+
+                    &.fl .dot {
+                        background-color: #dd6b66;
+                    }
+
+                    &.fr .dot {
+                        background-color: #759aa0;
+                    }
+
+                    .repo-name {
+                        height: 52px;
+                        line-height: 52px;
+                        padding: 0 10px;
+                        font-size: 16px;
+                        font-weight: bold;
+                        color: #e3e3e3;
+                        font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+
+                        .dot {
+                            display: inline-block;
+                            height: 10px;
+                            width: 10px;
+                            margin-right: 4px;
+                            border-radius: 50%;
+                        }
+                    }
+
+                    .list-item {
+                        height: 42px;
+                        line-height: 42px;
+                        padding: 0 10px;
+
+                        .fl {
+                            width: 190px;
+                        }
+                    }
+                }
+
+            }
+        }
+
+        .left-gragh {
+            float: left;
+            width: calc(100% - 372px);
+            height: 550px;
+            background-color: #fff;
+        }
+
+        .right-list {
+            float: right;
+            width: 372px;
+            height: 550px;
+            padding: 20px 0;
+
+            .list {
+                width: 100%;
+            }
+
+            .list-title {
+                background-color: #2c2c2c;
+                color: #e3e3e3;
+                height: 42px;
+                width: 100%;
+                border-radius: 10px;
+                line-height: 42px;
+                font-weight: bold;
+                font-size: 14px;
+                padding: 0 16px;
+                margin-bottom: 8px
+            }
+
+            .list-item {
+                height: 46px;
+                color: #e3e3e3;
+                line-height: 42px;
+                font-size: 12px;
+                padding: 0 20px;
+
+                .fl {
+                    width: 280px;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    overflow: hidden;
+
+                }
+
+                .yellow {
+                    color: #ffe895;
+                }
+            }
+        }
+    }
+}

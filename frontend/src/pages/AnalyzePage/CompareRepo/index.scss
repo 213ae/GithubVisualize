@@ -1,0 +1,27 @@
+.compare-repo {
+    #Overview {
+        padding-top: 75px;
+
+        .first-layer {
+            height: 460px;
+            margin-bottom: 30px;
+
+            .first-left {
+                float: left;
+                width: 620px;
+                height: 100%;
+            }
+
+            .first-right {
+                float: right;
+                width: calc(100% - 620px);
+                height: 100%;
+
+                .graph {
+                    margin-top: 8px;
+                    height: 412px;
+                }
+            }
+        }
+    }
+}

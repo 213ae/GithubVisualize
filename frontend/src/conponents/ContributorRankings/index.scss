@@ -1,0 +1,128 @@
+.contributor-rankings {
+    .ant-select {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.7);
+
+
+        .ant-select-selector {
+            font-size: 16px;
+            border: 1px solid transparent;
+            box-shadow: 0 0 0 0 !important;
+            background-color: #1b1b1d;
+            border-radius: 2px;
+            outline: 0 !important;
+
+            .ant-select-selection-item {
+                color: #fff;
+            }
+        }
+
+        &.ant-select-focused .ant-select-selector,
+        .ant-select-selector:hover {
+            border: 1px solid transparent !important;
+        }
+
+        .ant-select-arrow {
+            color: #fff;
+
+            .anticon:not(.ant-select-suffix) {
+                pointer-events: none;
+            }
+        }
+    }
+
+    .two-button {
+        float: right;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 5px;
+        overflow: hidden;
+
+        div {
+            float: left;
+            padding: 7px;
+            color: #fff;
+            cursor: pointer;
+
+            &:hover {
+                background-color: rgba(255, 255, 255, 0.1);
+            }
+            &.active {
+                color: #ffe895;
+                background-color: #ffe8952d;
+            }
+        }
+    }
+
+    .contributor-list {
+        height: 760px;
+        overflow: auto;
+        padding: 8px 0;
+        margin: 16px 0;
+
+        .list-item {
+            height: 56px;
+            padding: 8px 16px;
+
+            .user-pic {
+                float: left;
+                margin-right: 16px;
+
+                img {
+                    width: 40px;
+                    height: 40px;
+                    border-radius: 50%;
+                }
+            }
+
+            .user-name {
+                float: left;
+                width: 64px;
+                height: 40px;
+                margin-right: 8px;
+                line-height: 40px;
+                font-size: 12px;
+                color: #e3e3e3;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+
+            .strip {
+                float: left;
+                height: 28px;
+                margin-top: 6px;
+                width: 1100px;
+                background: linear-gradient(to right, #ffad62, #f87c0e);
+            }
+
+            .statics {
+                float: left;
+                font-size: 14px;
+                color: white;
+                height: 40px;
+                line-height: 40px;
+                padding: 0 8px;
+            }
+        }
+
+        &::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        &::-webkit-scrollbar-track {
+            background: #444;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background: #686868;
+            border-radius: 5px;
+        }
+
+        &::-webkit-scrollbar-thumb:hover {
+            background: #7a7a7a;
+        }
+    }
+}
+
+.activity-dropdown.ant-select-dropdown {
+    width: 200px !important;
+}

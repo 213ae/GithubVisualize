@@ -17,6 +17,10 @@
             }
         }
 
+        .ant-select-dropdown {
+            min-width: 199px;
+        }
+
         &.ant-select-focused .ant-select-selector,
         .ant-select-selector:hover {
             border: 1px solid transparent !important;

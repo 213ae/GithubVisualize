@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Select, Table } from 'antd'
 import { CaretDownOutlined, LeftOutlined, RightOutlined, StarFilled } from '@ant-design/icons';
-import './index.scss'
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import './index.scss'
 
 const { Column } = Table;
 
@@ -20,13 +20,17 @@ const colorMap = {
     "MATLAB": '#e16737', "Objective": '#438eff', "Perl": '#0298c3', "Fortan": '#4d41b1',
 }
 
-let bookmarkObjs = JSON.parse(localStorage.getItem('bookmarkRepos')) || {};
 
+let bookmarkObjs = JSON.parse(localStorage.getItem('bookmarkRepos')) || {};
 export default function ReposTable(props) {
     const { records } = props;
     const total = records.length;
 
-    const [bookmarkRepos, setBookmarkRepos] = useState(Object.keys(bookmarkObjs));
+    const [bookmarkRepos, setBookmarkRepos] = useState([]);
+    useEffect(() => {
+        bookmarkObjs = JSON.parse(localStorage.getItem('bookmarkRepos')) || {};
+        setBookmarkRepos(Object.keys(bookmarkObjs));
+    }, [])
 
     const [page, setPage] = useState({ idx: 0, size: 20 });
     const { idx, size } = page;
