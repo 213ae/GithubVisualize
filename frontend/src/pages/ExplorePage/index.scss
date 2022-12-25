@@ -61,6 +61,20 @@
 
     }
 
+    .container {
+        position: relative;
+        height: 700px;
+        background-color: #1b1b1d;
+
+        .loading {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-left: -16px;
+            margin-top: -16px;
+        }
+    }
+
     .display-board {
         width: 1168px;
 

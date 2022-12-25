@@ -5,16 +5,19 @@ import { orderBy, max } from 'lodash'
 import axios from 'axios';
 import SearchBar from '../../conponents/SearchBar'
 import './index.scss'
+import { Spin } from 'antd';
 
 export default function ExplorePage() {
     const [data, setData] = useState({});
     const [displayItems, setDisplayItems] = useState([]);
     const [borderHighlight, setBorderHighlight] = useState(false);
+    const [isLoading, setLoading] = useState(true);
 
     useEffect(() => {
+        setLoading(true);
         axios.get('/api/q/recent-hot-collections')
             .then(res => handleData(res.data.data))
-            .then(data => { setData(data); setDisplayItems(Object.keys(data)) })
+            .then(data => { setData(data); setDisplayItems(Object.keys(data)); setLoading(false) })
             .catch(err => console.log(err))
     }, [])
 
@@ -69,22 +72,23 @@ export default function ExplorePage() {
                         />
                     </div>
                 </div>
-                <div className="display-board clearfix">
-                    {
-                        displayItems.map((val, idx) =>
-                            <div key={idx} className="card">
-                                <div className="title">{val}</div>
-                                {data[val].map((item, idx) =>
-                                    <div key={idx} className="repo">
-                                        <div className="rank">{item.rank}{rankChange(item.rank_changes)}</div>
-                                        <div className="avatar">{avatar(item.repo_name.split('/')[0])}</div>
-                                        <Link className="link" to={`/analyze/${item.repo_name}`}>{item.repo_name}</Link>
-                                    </div>
-                                )}
-                            </div>
-                        )
-                    }
-                </div>
+                {isLoading ? <div className="container"><Spin size='large' className='loading' /></div> :
+                    <div className="display-board clearfix">
+                        {
+                            displayItems.map((val, idx) =>
+                                <div key={idx} className="card">
+                                    <div className="title">{val}</div>
+                                    {data[val].map((item, idx) =>
+                                        <div key={idx} className="repo">
+                                            <div className="rank">{item.rank}{rankChange(item.rank_changes)}</div>
+                                            <div className="avatar">{avatar(item.repo_name.split('/')[0])}</div>
+                                            <Link className="link" to={`/analyze/${item.repo_name}`}>{item.repo_name}</Link>
+                                        </div>
+                                    )}
+                                </div>
+                            )
+                        }
+                    </div>}
             </div>
         </div>
     )

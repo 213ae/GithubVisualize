@@ -7,12 +7,12 @@ import './index.scss'
 const yMaxList = [5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 60, 70, 80, 90, 100,
     120, 150, 200, 250, 300, 350, 400, 450, 500, 600, 700, 800, 900, 1000,
     1200, 1500, 2000, 2500, 3000, 3500, 4000, 4500, 5000, 6000, 7000, 8000, 9000, 10000];
+let yMaxIdx = 0;
 export default function CommitsHistory(props) {
     const isCompareMode = props[0] !== undefined && props[1] !== undefined;
     const repos = isCompareMode ? props : [props, {}];
 
     const [datas, setDatas] = useState([[], []]);
-    const [yMax, setYMax] = useState(5)
 
     useEffect(() => {
         Promise.all([fetchData(0), fetchData(1)])
@@ -34,7 +34,6 @@ export default function CommitsHistory(props) {
         const handled = [[], []];
         const monthSet = [[], []];
         const diff = [[], []];
-        let yMaxIdx = 0;
         let maxVal = 0;
 
         for (let i = 0; i < 2; i++) {
@@ -47,6 +46,13 @@ export default function CommitsHistory(props) {
         diff[1] = monthSet[0].filter(item => !monthSet[1].includes(item));
 
         for (let i = 0; i < 2; i++) {
+            for (let item of diff[i]) {
+                datas[i].push({ event_month: item});
+            }
+            datas[i] = orderBy(datas[i], ['event_month'])
+        }
+
+        for (let i = 0; i < 2; i++) {
             for (let item of datas[i]) {
                 maxVal = max([maxVal, item.pushes, item.commits]);
                 handled[i].push({ type: 'pushes', value: item.pushes, event_month: item.event_month.replace('-01', '') });
@@ -54,16 +60,8 @@ export default function CommitsHistory(props) {
             }
         }
 
+        yMaxIdx = 0;
         while (maxVal > yMaxList[yMaxIdx]) yMaxIdx++;
-        setYMax(yMaxList[yMaxIdx]);
-
-        for (let i = 0; i < 2; i++) {
-            for (let item of diff[i]) {
-                handled[i].push({ event_month: item });
-            }
-            handled[i] = orderBy(handled[i], ['event_month'])
-        }
-
         return handled;
     }
 
@@ -76,7 +74,7 @@ export default function CommitsHistory(props) {
         xAxis: {
             tickCount: 7,
         },
-        yAxis: { max: yMax},
+        yAxis: { max: yMaxList[yMaxIdx] },
         color: ['#dd6a65', '#759aa0'],
 
     };

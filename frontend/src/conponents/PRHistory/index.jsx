@@ -7,14 +7,13 @@ import './index.scss'
 const yMaxList = [5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 60, 70, 80, 90, 100,
     120, 150, 200, 250, 300, 350, 400, 450, 500, 600, 700, 800, 900, 1000,
     1200, 1500, 2000, 2500, 3000, 3500, 4000, 4500, 5000, 6000, 7000, 8000, 9000, 10000];
+let yMaxIdx = [0, 0];
 
 export default function PRHistory(props) {
     const isCompareMode = props[0] !== undefined && props[1] !== undefined;
     const repos = isCompareMode ? props : [props, {}];
 
     const [datas, setDatas] = useState([[[], []], [[], []]])
-    const [yMax, setYMax] = useState([5, 5])
-
     useEffect(() => {
         Promise.all([fetchData(0), fetchData(1)])
             .then(datas => handleData(datas))
@@ -36,7 +35,6 @@ export default function PRHistory(props) {
         const lines = [[], []];
         const monthSet = [[], []];
         const diff = [[], []];
-        let yMaxIdx = [0, 0];
         let maxVal = [0, 0];
 
         for (let i = 0; i < 2; i++) {
@@ -48,6 +46,13 @@ export default function PRHistory(props) {
         diff[1] = monthSet[0].filter(item => !monthSet[1].includes(item));
 
         for (let i = 0; i < 2; i++) {
+            for (let item of diff[i]) {
+                datas[i].push({ event_month: item, all_size: 0 });
+            }
+            datas[i] = orderBy(datas[i], ['event_month'])
+        }
+
+        for (let i = 0; i < 2; i++) {
             let total = 0;
             for (let item of datas[i]) {
                 maxVal[0] = max([maxVal[0], item.all_size]);
@@ -57,23 +62,14 @@ export default function PRHistory(props) {
                 stacks[i].push({ type: 'm', value: item.m, event_month: item.event_month.replace('-01', '') })
                 stacks[i].push({ type: 's', value: item.s, event_month: item.event_month.replace('-01', '') })
                 stacks[i].push({ type: 'xs', value: item.xs, event_month: item.event_month.replace('-01', '') })
-                lines[i].push({ total, event_month: item.event_month.replace('-01', '') })
+                if (total > 0) lines[i].push({ total, event_month: item.event_month.replace('-01', '') })
+                else lines[i].push({ event_month: item.event_month.replace('-01', '') })
             }
             maxVal[1] = max([maxVal[1], total])
         }
 
         while (maxVal[0] > yMaxList[yMaxIdx[0]]) yMaxIdx[0]++;
         while (maxVal[1] > 10 * yMaxList[yMaxIdx[1]]) yMaxIdx[1]++;
-        setYMax(yMaxList[yMaxIdx[0]], 10 * yMaxList[yMaxIdx[1]])
-
-        for (let i = 0; i < 2; i++) {
-            for (let item of diff[i]) {
-                stacks[i].push({ event_month: item });
-                lines[i].push({ event_month: item });
-            }
-            stacks[i] = orderBy(stacks[i], ['event_month'])
-            lines[i] = orderBy(lines[i], ['event_month'])
-        }
 
         return [[stacks[0], lines[0]], [stacks[1], lines[1]]];
     }
@@ -98,10 +94,10 @@ export default function PRHistory(props) {
         },
         yAxis: {
             value: {
-                max: yMax[0]
+                max: yMaxList[yMaxIdx[0]]
             },
             total: {
-                max: yMax[1]
+                max: yMaxList[yMaxIdx[1]] * 10
             }
         },
         theme: 'dark',

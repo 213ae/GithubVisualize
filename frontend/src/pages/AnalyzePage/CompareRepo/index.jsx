@@ -14,7 +14,6 @@ import './index.scss'
 const { Link } = Anchor;
 
 export default function CompareRepo(repos) {
-    const repoObj = repos[0]
     return (
         <div className="compare-repo">
             <div className="left-nav">
