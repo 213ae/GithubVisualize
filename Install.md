@@ -1,4 +1,6 @@
 cd frontend
-npm i 
-npm run start
+
+yarn add 
+
+yarn start
 
