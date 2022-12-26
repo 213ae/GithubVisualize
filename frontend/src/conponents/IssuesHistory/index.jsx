@@ -84,8 +84,6 @@ export default function IssuesHistory(props) {
         while (maxVal[0] > yMaxList[yMaxIdx[0]]) yMaxIdx[0]++;
         while (maxVal[1] > 10 * yMaxList[yMaxIdx[1]]) yMaxIdx[1]++;
 
-
-
         const handled = [[groups[0], lines[0]], [groups[1], lines[1]]]
         return handled;
     }
@@ -121,7 +119,7 @@ export default function IssuesHistory(props) {
     };
 
     return (
-        <div className={'issue-history ' + (isCompareMode ? 'compare-mode' : '')}>
+        <div className={'issues-history ' + (isCompareMode ? 'compare-mode' : '')}>
             <h3>Issue History</h3>
             <p>Monthly opened/closed issues and the historical totals.</p>
             <div className='container'>

@@ -42,6 +42,7 @@ export default function PRHistory(props) {
                 monthSet[i].push(item.event_month)
             }
         }
+        
         diff[0] = monthSet[1].filter(item => !monthSet[0].includes(item));
         diff[1] = monthSet[0].filter(item => !monthSet[1].includes(item));
 
@@ -68,6 +69,7 @@ export default function PRHistory(props) {
             maxVal[1] = max([maxVal[1], total])
         }
 
+        yMaxIdx = [0, 0];
         while (maxVal[0] > yMaxList[yMaxIdx[0]]) yMaxIdx[0]++;
         while (maxVal[1] > 10 * yMaxList[yMaxIdx[1]]) yMaxIdx[1]++;
 
