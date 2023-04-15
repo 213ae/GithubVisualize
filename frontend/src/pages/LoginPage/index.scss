@@ -1,0 +1,23 @@
+.ant-pro-form-login-container {
+    padding-inline: 0 !important;
+    background-color: #242526;
+    .ant-pro-form-login-desc{
+        color: #e3e3e3;
+        font-weight: bold;
+    } 
+    .ant-pro-form-login-title {
+        color: #ffe895;
+        font-size: 44px;
+        font-family: system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+    }
+    .ant-tabs-tab-btn, .ant-tabs-tab-remove {
+        color: #e3e3e3;
+    }
+    .ant-pro-form-login-desc {
+        margin-block-start: 20px;
+        margin-block-end: 30px;
+    }
+    .ant-btn>span {
+        color: #3c3c3c;
+    }
+}

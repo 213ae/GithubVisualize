@@ -7,8 +7,13 @@ import MyStarredPage from '../pages/UserCenterPage/MyStarredPage'
 import MyReposPage from '../pages/UserCenterPage/MyReposPage'
 import HistoryPage from '../pages/UserCenterPage/HistoryPage'
 import AnalyzePage from '../pages/AnalyzePage'
+import LoginPage from '../pages/LoginPage'
 
 const routes = [
+    {
+        path: '/login',
+        element: <LoginPage />
+    },
     {
         path: '/index',
         element: <HomePage />
@@ -21,7 +26,6 @@ const routes = [
         path: '/explore',
         element: <ExplorePage />
     },
-    
     {
         path: '/usercenter',
         element: <UserCenterPage />,
