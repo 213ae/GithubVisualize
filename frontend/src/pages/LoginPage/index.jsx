@@ -27,12 +27,12 @@ export default function LoginPage() {
                     }}
                     onFinish={values => {
                         if (loginType === 'login') {
-                            axios.get(`${serverAddress}/user/login?${qs.stringify(values)}`)
+                            axios.post(`${serverAddress}/user/login?${qs.stringify(values)}`)
                                 .then(res => {
-                                    if (res.data.code === 0) {
+                                    if (res.data.code == 0) {
                                         message.success(res.data.msg);
                                         localStorage.setItem('token', res.data.data);
-                                        setTimeout(() => navigate('/'), 0);
+                                        navigate('/')
                                     } else {
                                         message.error(res.data.msg);
                                     }
@@ -40,7 +40,7 @@ export default function LoginPage() {
                         } else {
                             axios.post(`${serverAddress}/user/register`, values)
                                 .then(res => {
-                                    if (res.data.code === 0) {
+                                    if (res.data.code == 0) {
                                         message.success(res.data.msg);
                                         navigate('/')
                                     } else {
@@ -73,7 +73,7 @@ export default function LoginPage() {
                                         new Promise((resolve, reject) => {
                                             axios.get(`${serverAddress}/user/check_name?username=${val}`)
                                                 .then(res => {
-                                                    if (res.data.code === 0) {
+                                                    if (res.data.code == 0) {
                                                         if (val) reject('用户名未注册!');
                                                         else resolve();
                                                     } else {
@@ -117,7 +117,7 @@ export default function LoginPage() {
                                         new Promise((resolve, reject) => {
                                             axios.get(`${serverAddress}/user/check_name?username=${val}`)
                                                 .then(res => {
-                                                    if (res.data.code === -1) {
+                                                    if (res.data.code == -1) {
                                                         reject('用户名已存在!');
                                                     } else {
                                                         resolve();
@@ -173,7 +173,7 @@ export default function LoginPage() {
                                         new Promise((resolve, reject) => {
                                             axios.get(`${serverAddress}/user/check_mail?mail=${val}`,{})
                                                 .then(res => {
-                                                    if (res.data.code === -1) {
+                                                    if (res.data.code == -1) {
                                                         reject('邮箱已使用!');
                                                     } else {
                                                         resolve();
