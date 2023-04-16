@@ -13,7 +13,7 @@ function App() {
 
   useEffect(() => {
       setToken(localStorage.getItem('token')) 
-      if (!token) navigate('/login');
+      if (!localStorage.getItem('token')) navigate('/login');
   }, [path])
 
   return (

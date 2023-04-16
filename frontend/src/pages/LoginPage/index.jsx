@@ -27,12 +27,12 @@ export default function LoginPage() {
                     }}
                     onFinish={values => {
                         if (loginType === 'login') {
-                            axios.post(`${serverAddress}/user/login?${qs.stringify(values)}`)
+                            axios.get(`${serverAddress}/user/login?${qs.stringify(values)}`)
                                 .then(res => {
                                     if (res.data.code === 0) {
                                         message.success(res.data.msg);
                                         localStorage.setItem('token', res.data.data);
-                                        navigate('/')
+                                        setTimeout(() => navigate('/'), 0);
                                     } else {
                                         message.error(res.data.msg);
                                     }
