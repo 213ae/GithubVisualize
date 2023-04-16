@@ -12,8 +12,9 @@ function App() {
   const [token, setToken] = useState(undefined);
 
   useEffect(() => {
-      setToken(localStorage.getItem('token')) 
-      if (!localStorage.getItem('token')) navigate('/login');
+      const tmpToken = localStorage.getItem('token')
+      setToken(tmpToken)
+      if (!tmpToken) navigate('/login');
   }, [path])
 
   return (
